@@ -15,7 +15,7 @@ class SettInn{
 			this.data=data;
 		}
 		int compareTo(Node in){
-			return this.compareTo(in);
+			return this.data.compareTo(in);
 		}
 	}
 
@@ -56,7 +56,26 @@ class SettInn{
 	}
 	void deleate(String in){
 		Node temp = search(in);
+		if(temp.compareTo(temp.bak.hoyere.data)==0){
+			temp.bak.hoyere=null;
+		}else{
+			temp.bak.lavere=null;
+		}
+		settInnListe(temp);
 
+
+	}
+	void settInnListe(Node in){
+		Node temp=in;
+
+		while(true){
+			if(temp.hoyere!=null){
+				settInnListe(temp.hoyere);
+			}else if(temp.lavere!=null){
+				temp=temp.lavere;
+			}else{continue;}
+
+		}
 
 	}
 
