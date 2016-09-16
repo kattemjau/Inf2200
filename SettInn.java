@@ -1,9 +1,8 @@
-import java.lang.Comparable;
 
-class SettInn{
+class SettInn<T extends Comparable<T>>{
 	Node root;
 
-	class Node<T extends Comparable<T>>{
+	class Node{
 		//hoyere==horyre
 		Node hoyere;
 		//lavere==venstre
@@ -18,9 +17,7 @@ class SettInn{
 		Node(T data){
 			this.data=data;
 		}
-		int compareTo(Node<T> in){
-			return this.data.compareTo(in.data);
-		}
+
 		void leggTil(){
 			antall ++;
 		}
@@ -28,12 +25,18 @@ class SettInn{
 
 
 
-	void insert(Node in){
+	void insert(T data){
+		if(data==null){
+			return;
+		}
+
 		Node temp = root;
+
+		Node in = new Node(data);
 
 		int k;
 		while(true){
-			k=temp.compareTo(in);
+			k=temp.data.compareTo(in.data);
 
 			if(k == 0){temp.leggTil(); break;}
 
@@ -62,9 +65,9 @@ class SettInn{
 
 		if(temp==null){
 			return null;
-		}else if(temp.compareTo(in) > 0){
+		}else if(temp.data.compareTo(in.data) > 0){
 			return search(temp.lavere);
-		}else if(temp.compareTo(in) < 0){
+		}else if(temp.data.compareTo(in.data) < 0){
 			return search(temp.hoyere);
 		}else {
 			return temp;
@@ -93,7 +96,7 @@ class SettInn{
 
 	void deleate(Node in){
 		Node temp = search(in);
-		if(temp.compareTo(temp.bak.hoyere)==0){
+		if(temp.data.compareTo(temp.bak.hoyere.data)==0){
 			temp.bak.hoyere=null;
 		}else{
 			temp.bak.lavere=null;
@@ -101,6 +104,32 @@ class SettInn{
 		settInnListe(temp);
 
 	}
+	/*	start p rekursiv metode
+	if(in==null){
+		return null;
+	}
+
+		if(data.compareTo(in.data) < 0){
+			temp.bak.lavere=deleate(temp.lavere);
+		}else if(data.compareTo(in.data) > 0){
+			temp.bak.hoyere= deleate(temp.hoyere);
+		}else {
+			if(in.lavere==null){
+				in = in.hoyere;
+			}else if(n.right == null){
+				in = in.lavere;
+			}
+			else {
+				in.antall--;
+			}
+		}
+		return in;
+
+
+	}
+
+
+		} */
 
 	void settInnListe(Node in){
 		Node temp=in;
