@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 class Main{
 
@@ -12,19 +13,36 @@ class Main{
 
     while(in.hasNextLine()){
       String data = in.nextLine();
+      System.out.println(data);
       liste.insert(data);
     }
 
     Scanner leser = new Scanner(System.in);
+    SearchInterface search = new SearchInterface(liste);
     String valg;
 
-    while(true){
-      valg=leser.nextLine();
+    ArrayList<String> likeOrd;
+    //remove busybody
 
+
+    while(true){
+      System.out.println("Press (q) to exit program, or search for a word");
+      valg=leser.nextLine();
       if(valg.equals("q")){
         break;
       } else {
-        liste.search(valg);
+        if(liste.search(valg.toLowerCase())==null){
+          System.out.println("Couldent find the word: " + valg);
+          //search simmular words
+          likeOrd = search.searchSimmular(valg);
+          System.out.println("fant disse liknende ordene");
+          for(String s : likeOrd) {
+              System.out.println(s);
+            }
+        }else{
+          System.out.println("Found the word: " + valg);
+        }
+
       }
     }
 

@@ -1,6 +1,6 @@
 
 class SettInn<T extends Comparable<T>>{
-	Node root;
+	Node root = null;
 
 	class Node{
 		//hoyere==horyre
@@ -29,10 +29,16 @@ class SettInn<T extends Comparable<T>>{
 		if(data==null){
 			return;
 		}
+		Node in = new Node(data);
+		System.out.println(root);
+		if(root==null){
+			root = in;
+			return;
+		}
 
 		Node temp = root;
 
-		Node in = new Node(data);
+		
 
 		int k;
 		while(true){
@@ -60,18 +66,22 @@ class SettInn<T extends Comparable<T>>{
 
 	}
 
-	Node search(Node in){
-		Node temp = root;
+	T search(T in){
+		return search(in, root);
+	}
 
-		if(temp==null){
+	T search(T in, Node temp){
+		if(in==null){
 			return null;
-		}else if(temp.data.compareTo(in.data) > 0){
-			return search(temp.lavere);
-		}else if(temp.data.compareTo(in.data) < 0){
-			return search(temp.hoyere);
+		}else if(in.compareTo(temp.data) < 0){
+			return search(in, temp.lavere);
+		}else if(in.compareTo(temp.data) > 0){
+			return search(in, temp.hoyere);
 		}else {
-			return temp;
+			return in;
 		}
+
+
 
 		/* ikke rekursiv
 		while(true){
@@ -94,8 +104,9 @@ class SettInn<T extends Comparable<T>>{
 		return temp; */
 	}
 
-	void deleate(Node in){
-		Node temp = search(in);
+
+	void deleate(T in){
+		Node temp = root;
 		if(temp.data.compareTo(temp.bak.hoyere.data)==0){
 			temp.bak.hoyere=null;
 		}else{
