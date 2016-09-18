@@ -73,6 +73,7 @@ class SettInn<T extends Comparable<T>>{
 	T search(T in, Node temp){
 		if(in==null){
 			return null;
+			//temp.data er en nullpeker............
 		}else if(in.compareTo(temp.data) < 0){
 			return search(in, temp.lavere);
 		}else if(in.compareTo(temp.data) > 0){
