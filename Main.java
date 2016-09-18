@@ -7,14 +7,14 @@ class Main{
 
   public static void main(String[] args) {
     try{
-    File fil = new File("test.txt");
+    File fil = new File("dictionary.txt");
     Scanner in = new Scanner(fil);
     SettInn<String> liste = new SettInn<String>();
 
     while(in.hasNextLine()){
       String data = in.nextLine();
-      System.out.println(data);
-      liste.insert(data);
+      //System.out.println(data);
+      liste.insert(data.toLowerCase());
     }
 
     Scanner leser = new Scanner(System.in);

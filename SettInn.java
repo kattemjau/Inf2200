@@ -30,7 +30,7 @@ class SettInn<T extends Comparable<T>>{
 			return;
 		}
 		Node in = new Node(data);
-		System.out.println(root);
+		//System.out.println(root);
 		if(root==null){
 			root = in;
 			return;
@@ -71,16 +71,21 @@ class SettInn<T extends Comparable<T>>{
 	}
 
 	T search(T in, Node temp){
-		if(in==null){
-			return null;
-			//temp.data er en nullpeker............
-		}else if(in.compareTo(temp.data) < 0){
+		//if(in==null){
+		//	return null;
+		//}
+		try{
+		if(in.compareTo(temp.data) > 0){
 			return search(in, temp.lavere);
-		}else if(in.compareTo(temp.data) > 0){
+		}else if(in.compareTo(temp.data) < 0){
 			return search(in, temp.hoyere);
 		}else {
 			return in;
 		}
+	}catch(NullPointerException e){
+		//e.printStackTrace();
+		return null;
+	}
 
 
 
