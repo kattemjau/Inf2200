@@ -6,7 +6,7 @@ class SearchInterface{
 	SearchInterface(SettInn<String> tree){
 		this.tree=tree;
 	}
-	
+
 	ArrayList<String> searchSimmular(String data){
 		ArrayList<String> liste = new ArrayList<>();
 
@@ -31,7 +31,7 @@ class SearchInterface{
 			for (int k=0;k < 26; k++) {
 				char[] lik = et;
 				lik[i]=((char) ('a' + k));
-				
+
 				String idar = new String(lik);
 				if(tree.search(idar) != null){
 					liste.add(idar);
@@ -39,7 +39,7 @@ class SearchInterface{
 
 			}
 		}
-		//en bokstav er fjernet
+		//en bokstav er fjernet funker ikke
 		for (int i=0; i < tor; i++) {
 			String lik = "";
 			for(int k=0; k < tor; k++){
@@ -47,11 +47,11 @@ class SearchInterface{
 					lik += et[k];
 				}
 			}
-			
+
 			if(tree.search(lik) != null){
 				liste.add(lik);
 			}
-			
+
 
 		}
 		//en bokstav lagt til

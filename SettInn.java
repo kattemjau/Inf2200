@@ -1,6 +1,7 @@
 
 class SettInn<T extends Comparable<T>>{
 	Node root = null;
+	int antall;
 
 	class Node{
 		//hoyere==horyre
@@ -23,6 +24,9 @@ class SettInn<T extends Comparable<T>>{
 		}
 	}
 
+	int antall(){
+		return antall;
+	}
 
 
 	void insert(T data){
@@ -30,6 +34,7 @@ class SettInn<T extends Comparable<T>>{
 			return;
 		}
 		Node in = new Node(data);
+		antall++;
 		//System.out.println(root);
 		if(root==null){
 			root = in;
@@ -38,7 +43,7 @@ class SettInn<T extends Comparable<T>>{
 
 		Node temp = root;
 
-		
+
 
 		int k;
 		while(true){
@@ -161,5 +166,51 @@ class SettInn<T extends Comparable<T>>{
 		}
 
 	}
+
+	int treeDepth =0;
+
+
+	void checkMaxDepth(Node n, int depth){
+		if(treeDepth < depth){
+			treeDepth=depth;
+		}
+		if(n.lavere != null){
+			checkMaxDepth(n.lavere, depth +1 );
+		}if(n.hoyere != null){
+			checkMaxDepth(n.hoyere, depth +1 );
+		}
+	}
+	int nodes(Node n, int i, int k){
+		if(n==null){
+			return 0;
+		}if(k==i){
+			return 1;
+		}
+		return nodes(n.lavere, i, k++) + nodes(n.hoyere, i, k++);
+	}
+	int nodes(int i){
+		return nodes(root, i, 0);
+	}
+	int checkMaxDepth(){
+		checkMaxDepth(root, 0);
+		return treeDepth;
+	}
+	T lastWord(Node n){
+		if(n.hoyere==null){
+			return n.data;
+		}return lastWord(n.hoyere);
+	}
+	T lastWord(){
+		return lastWord(root);
+	}
+	T firstWord(Node n){
+		if(n.lavere == null){
+			return n.data;
+		} return firstWord(n.lavere);
+	}
+	T firstWord(){
+		return firstWord(root);
+	}
+
 
 }
