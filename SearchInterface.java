@@ -12,37 +12,41 @@ class SearchInterface{
 
 		char[] et = data.toCharArray();
 
-		int tor = data.length();
 
 
-		//endre plass pa bokstaver
-		for (int i=0; i < (tor - 1); i++) {
-			char[] lik = et;
+		//endre plass pa bokstaver funker
+		for (int i=0; i < (data.length() - 1); i++) {
+			char[] lik = data.toCharArray();
 			lik[i] = et[i+1];
 			lik[i + 1] = et[1];
 			String idar = new String(lik);
 			if(tree.search(idar) != null){
 				liste.add(idar);
+				//System.out.println("1");
+				//System.out.println(idar);
 			}
 		}
 
-		//bytt ut bokstaver
-		for (int i=0; i < tor; i++) {
+		//bytt ut bokstaver funker
+		for (int i=0; i < data.length(); i++) {
 			for (int k=0;k < 26; k++) {
-				char[] lik = et;
+				char[] lik = data.toCharArray();
 				lik[i]=((char) ('a' + k));
 
 				String idar = new String(lik);
 				if(tree.search(idar) != null){
 					liste.add(idar);
+					//System.out.println("2");
+					//System.out.println(idar);
+
 				}
 
 			}
 		}
-		//en bokstav er fjernet funker ikke
-		for (int i=0; i < tor; i++) {
+		//en bokstav er fjernet funker
+		for (int i=0; i < data.length(); i++) {
 			String lik = "";
-			for(int k=0; k < tor; k++){
+			for(int k=0; k < data.length(); k++){
 				if(k!=i){
 					lik += et[k];
 				}
@@ -50,12 +54,15 @@ class SearchInterface{
 
 			if(tree.search(lik) != null){
 				liste.add(lik);
+				//System.out.println("3");
+				//System.out.println(lik);
+
 			}
 
 
 		}
-		//en bokstav lagt til funker ikkje ved plass 0
-		for (int i=0; i < tor; i++) {
+		//en bokstav lagt til funker
+		for (int i=0; i < data.length(); i++) {
 			for (int k=0;k < 26; k++) {
 				char[] lik = et;
 				lik[i]=((char) ('a' + k));
@@ -63,6 +70,9 @@ class SearchInterface{
 				String idar = new String(lik);
 				if(tree.search(idar) != null){
 					liste.add(idar);
+					//System.out.println("4");
+					//System.out.println(idar);
+
 				}
 			}
 		}

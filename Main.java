@@ -17,7 +17,7 @@ class Main{
       liste.insert(data.toLowerCase());
     }
 
-    System.out.println(liste.antall());
+    System.out.println(liste.antall() + " Antall ord");
     Scanner leser = new Scanner(System.in);
     SearchInterface search = new SearchInterface(liste);
     String valg;

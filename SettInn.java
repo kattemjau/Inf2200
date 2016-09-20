@@ -77,10 +77,10 @@ class SettInn<T extends Comparable<T>>{
 	}
 
 	T search(T in, Node temp){
-		//if(in==null){
-		//	return null;
-		//}
-		try{
+		if(temp==null){
+			return null;
+		}
+
 		if(in.compareTo(temp.data) > 0){
 			return search(in, temp.lavere);
 		}else if(in.compareTo(temp.data) < 0){
@@ -88,34 +88,10 @@ class SettInn<T extends Comparable<T>>{
 		}else {
 			return in;
 		}
-	}catch(NullPointerException e){
-		//e.printStackTrace();
-		return null;
+
 	}
 
-
-
-		/* ikke rekursiv
-		while(true){
-			if(temp.compareTo(in) <0){
-				if(temp.lavere != null){
-					temp=temp.lavere;
-				}else{
-					return null;
-				}
-			}else if(temp.compareTo(in)>0){
-				if(temp.hoyere != null){
-					temp=temp.hoyere;
-				}else{
-					return null;
-				}
-			}else{
-				break;
-			}
-		}
-		return temp; */
-	}
-
+	
 
 	void deleate(T in){
 		Node temp = root;
@@ -127,32 +103,7 @@ class SettInn<T extends Comparable<T>>{
 		settInnListe(temp);
 
 	}
-	/*	start p rekursiv metode
-	if(in==null){
-		return null;
-	}
 
-		if(data.compareTo(in.data) < 0){
-			temp.bak.lavere=deleate(temp.lavere);
-		}else if(data.compareTo(in.data) > 0){
-			temp.bak.hoyere= deleate(temp.hoyere);
-		}else {
-			if(in.lavere==null){
-				in = in.hoyere;
-			}else if(n.right == null){
-				in = in.lavere;
-			}
-			else {
-				in.antall--;
-			}
-		}
-		return in;
-
-
-	}
-
-
-		} */
 
 	void settInnListe(Node in){
 		Node temp=in;
@@ -184,7 +135,7 @@ class SettInn<T extends Comparable<T>>{
 	int nodes(Node n, int i, int k){
 		if(n==null){
 			return 0;
-		}if(k==i){
+		}if(i==k){
 			return 1;
 		}
 		return nodes(n.lavere, i, k++) + nodes(n.hoyere, i, k++);
@@ -218,18 +169,23 @@ class SettInn<T extends Comparable<T>>{
 	void statistic(){
 		checkMaxDepth(root, 0);
 		System.out.println("antall noder i dybden");
-    //might work
-    System.out.println(treeDepth);
-    System.out.println("antall noder pao bestemt plass.");
-    //dosent work
-    for (int i=0;i< treeDepth; i++) {
-      System.out.print(nodes(root, i, 0));
+   		//works
+		System.out.println(treeDepth);
 
-    }
+
+		System.out.println("antall noder pao bestemt plass.");
+   		 //dosent work
+		for (int i=0;i< treeDepth; i++) {
+			System.out.print("plass " + i + ": ");
+			System.out.println(nodes(root, i, 0));
+
+		} 
+
+		System.out.println(" ");
 		System.out.println("forste node");
-    System.out.println(lastWord(root));
+		System.out.println(lastWord(root));
 		System.out.println("siste node ");
-    System.out.println(firstWord(root));
+		System.out.println(firstWord(root));
 
 		finnGjennomsnitt(root, 0);
 
@@ -239,9 +195,10 @@ class SettInn<T extends Comparable<T>>{
 			antall++;
 			sum = sum + e;
 		}
-	
+		System.out.println(" ");
+
 		System.out.println("gjennomsnitt");
-		System.out.println(sum/antall);
+		System.out.println(sum/antall + " Noder");
 
 
 	}
