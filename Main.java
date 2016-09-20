@@ -46,18 +46,7 @@ class Main{
 
       }
     }
-    System.out.println("antall noder i dybden");
-    System.out.println(liste.checkMaxDepth());
-    System.out.println("antall noder pao bestemt plass.");
-    //dosent work
-    for (int i=0;i< liste.checkMaxDepth(); i++) {
-      System.out.println(liste.nodes(i));
-
-    }
-    System.out.println("siste node ");
-    System.out.println(liste.lastWord());
-    System.out.println("forste node");
-    System.out.println(liste.firstWord());
+    liste.statistic();
 
     } catch(FileNotFoundException e){
       e.printStackTrace();

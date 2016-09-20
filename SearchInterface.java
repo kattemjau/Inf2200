@@ -54,7 +54,7 @@ class SearchInterface{
 
 
 		}
-		//en bokstav lagt til
+		//en bokstav lagt til funker ikkje ved plass 0
 		for (int i=0; i < tor; i++) {
 			for (int k=0;k < 26; k++) {
 				char[] lik = et;
