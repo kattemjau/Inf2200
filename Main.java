@@ -23,7 +23,9 @@ class Main{
     String valg;
 
     ArrayList<String> likeOrd;
-    //remove busybody
+
+    liste.deleate("busybody");
+    liste.insert("busybody");
 
 
     while(true){
@@ -35,11 +37,16 @@ class Main{
         if(liste.search(valg.toLowerCase())==null){
           System.out.println("Couldent find the word: " + valg);
           //search simmular words
+          Long start = System.nanoTime();
           likeOrd = search.searchSimmular(valg);
+          Long slutt = System.nanoTime();
+
+
           System.out.println("fant disse liknende ordene");
           for(String s : likeOrd) {
               System.out.println(s);
             }
+          System.out.println("Tid pa look up: " + ((slutt - start)/100000) + " ms" );
         }else{
           System.out.println("Found the word: " + valg);
         }

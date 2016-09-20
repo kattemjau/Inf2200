@@ -91,33 +91,29 @@ class SettInn<T extends Comparable<T>>{
 
 	}
 
-	
 
-	void deleate(T in){
-		Node temp = root;
-		if(temp.data.compareTo(temp.bak.hoyere.data)==0){
-			temp.bak.hoyere=null;
+
+	void deleate(T in, Node n){
+		if(n==null){
+			return;
+		}
+		if(n.data.compareTo(in)==0){
+			n.bak.hoyere=null;
+			n.bak.lavere=null;
+			return;
+		}if(n.hoyere.data.compareTo(in)<0){
+			deleate(in, n.hoyere);
+			return;
 		}else{
-			temp.bak.lavere=null;
-		}
-		settInnListe(temp);
-
-	}
-
-
-	void settInnListe(Node in){
-		Node temp=in;
-
-		while(true){
-			if(temp.hoyere!=null){
-				settInnListe(temp.hoyere);
-			}else if(temp.lavere!=null){
-				temp=temp.lavere;
-			}else{break;}
-
+			deleate(in, n.lavere);
+			return;
 		}
 
 	}
+	void deleate(T in){
+		deleate(in, root);
+	}
+
 
 	int treeDepth =0;
 
@@ -134,11 +130,17 @@ class SettInn<T extends Comparable<T>>{
 	}
 	int nodes(Node n, int i, int k){
 		if(n==null){
+		//	System.out.println("0");
 			return 0;
-		}if(i==k){
+		}
+		if(i==k){
+		//	System.out.println("1");
 			return 1;
 		}
-		return nodes(n.lavere, i, k++) + nodes(n.hoyere, i, k++);
+
+	//	System.out.println("rekursiv" + i + k);
+		k=k+1;
+		return nodes(n.lavere, i, k) + nodes(n.hoyere, i, k);
 	}
 	T lastWord(Node n){
 		if(n.hoyere==null){
@@ -166,6 +168,7 @@ class SettInn<T extends Comparable<T>>{
 	}
 
 
+
 	void statistic(){
 		checkMaxDepth(root, 0);
 		System.out.println("antall noder i dybden");
@@ -174,12 +177,13 @@ class SettInn<T extends Comparable<T>>{
 
 
 		System.out.println("antall noder pao bestemt plass.");
-   		 //dosent work
-		for (int i=0;i< treeDepth; i++) {
+		for (int i=0;i< treeDepth+1; i++) {
 			System.out.print("plass " + i + ": ");
 			System.out.println(nodes(root, i, 0));
 
-		} 
+		}
+
+
 
 		System.out.println(" ");
 		System.out.println("forste node");

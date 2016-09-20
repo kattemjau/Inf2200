@@ -29,9 +29,9 @@ class SearchInterface{
 
 		//bytt ut bokstaver funker
 		for (int i=0; i < data.length(); i++) {
-			for (int k=0;k < 26; k++) {
+			for (char k='a';k <= 'z'; k++) {
 				char[] lik = data.toCharArray();
-				lik[i]=((char) ('a' + k));
+				lik[i]=k;
 
 				String idar = new String(lik);
 				if(tree.search(idar) != null){
@@ -61,21 +61,26 @@ class SearchInterface{
 
 
 		}
-		//en bokstav lagt til funker
-		for (int i=0; i < data.length(); i++) {
-			for (int k=0;k < 26; k++) {
-				char[] lik = et;
-				lik[i]=((char) ('a' + k));
-
-				String idar = new String(lik);
-				if(tree.search(idar) != null){
-					liste.add(idar);
-					//System.out.println("4");
-					//System.out.println(idar);
-
+		//en bokstav lagt til
+		for (int i=0; i < (data.length() +1 ); i++) {
+			for (char k='a';k <= 'z'; k++) {
+				String lik ="";
+					for (char o: data.toCharArray()){
+						if(lik.length() == i){
+							lik+=k;
+						}
+						lik += o;
+						if(lik.length() == data.length() && i == data.length()){
+							lik+=k;
+						}
+					}
+					//System.out.println(i + " " + k);
+					//System.out.println(lik);
+					if(tree.search(lik) != null && !liste.contains(lik)){
+						liste.add(lik);
+					}
 				}
 			}
-		}
 		return liste;
 	}
 }
