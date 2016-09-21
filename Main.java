@@ -46,7 +46,7 @@ class Main{
           for(String s : likeOrd) {
               System.out.println(s);
             }
-          System.out.println("Tid pa look up: " + ((slutt - start)/100000) + " ms" );
+          System.out.println("Tid pa look up: " + Math.round((slutt - start)/ (float) 10000 )/100.0 + " ms" );
         }else{
           System.out.println("Found the word: " + valg);
         }
