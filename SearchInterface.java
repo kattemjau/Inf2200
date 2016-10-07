@@ -12,13 +12,11 @@ class SearchInterface{
 
 		char[] et = data.toCharArray();
 
-
-
 		//endre plass pa bokstaver funker
 		for (int i=0; i < (data.length() - 1); i++) {
 			char[] lik = data.toCharArray();
 			lik[i] = et[i+1];
-			lik[i + 1] = et[1];
+			lik[i + 1] = et[i];
 			String idar = new String(lik);
 			if(tree.search(idar) != null){
 				liste.add(idar);

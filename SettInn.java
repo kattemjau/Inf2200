@@ -28,7 +28,36 @@ class SettInn<T extends Comparable<T>>{
 	int antall(){
 		return antall;
 	}
+	void insert(T data, Node n){
+		if(n==null){
+			return;
+		}
 
+		if(data.compareTo(n.data) < 0) {
+			if(n.hoyere==null){
+				n.hoyere=new Node(data);
+				antall++;
+			}
+			insert(data, n.hoyere);
+		}
+		else if (data.compareTo(n.data) > 0) {
+			if(n.lavere==null){
+				n.lavere=new Node(data);
+				antall++;
+			}
+			insert(data, n.lavere);
+		}
+
+	}
+	void insert(T data){
+		if(root==null){
+			root = new Node(data);
+			antall++;
+			return;
+		}
+		insert(data, root);
+	}
+/*
 
 	void insert(T data){
 		if(data==null){
@@ -44,9 +73,8 @@ class SettInn<T extends Comparable<T>>{
 
 		Node temp = root;
 
-
-
 		int k;
+
 		while(true){
 			k=temp.data.compareTo(in.data);
 
@@ -70,7 +98,7 @@ class SettInn<T extends Comparable<T>>{
 			}
 		}
 
-	}
+	} */
 
 	T search(T in){
 		return search(in, root);
@@ -93,27 +121,33 @@ class SettInn<T extends Comparable<T>>{
 
 
 
-	void deleate(T in, Node n){
-		if(n==null){
-			return;
-		}
-		if(n.data.compareTo(in)==0){
-			n.bak.hoyere=null;
-			n.bak.lavere=null;
-			return;
-		}if(n.hoyere.data.compareTo(in)<0){
-			deleate(in, n.hoyere);
-			return;
-		}else{
-			deleate(in, n.lavere);
-			return;
-		}
+	Node deleate(T in, Node n){
+		if(n == null) {
+					return null;
+				}
+				if(in.compareTo(n.data) < 0) {
+					n.hoyere = deleate(in, n.hoyere);
+				}
+				else if (in.compareTo(n.data) > 0) {
+					n.lavere = deleate(in, n.lavere);
+				}
+				else {
+					if(n.hoyere == null) {
+						n = n.lavere;
+					}
+					else if (n.lavere == null) {
+						n = n.hoyere;
+					}
+					else {
+						n.lavere = deleate(n.data, n.lavere);
+					}
+				}
+		return n;
 
 	}
 	void deleate(T in){
 		deleate(in, root);
 	}
-
 
 	int treeDepth =0;
 

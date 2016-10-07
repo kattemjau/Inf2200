@@ -27,6 +27,16 @@ class Main{
     liste.deleate("busybody");
     liste.insert("busybody");
 
+    System.out.println("testing deleate:");
+    System.out.println("superman ");
+    liste.deleate("superman");
+    System.out.println("x amn word");
+    liste.insert("x_last_word");
+    liste.deleate("x_last_word");
+    System.out.println("cool");
+    liste.deleate("cool");
+    System.out.println("testing done!");
+
 
     while(true){
       System.out.println("Press (q) to exit program, or search for a word");
