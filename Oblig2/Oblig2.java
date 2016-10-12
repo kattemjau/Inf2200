@@ -3,10 +3,12 @@ class Oblig2{
     Prosjekt pro = new Prosjekt();
     try{
       pro.innleser("buildhouse1.txt");
+      pro.settPointer();
+      pro.settEarliest();
       pro.printTask();
 
   }catch(Exception e){
-
+    e.printStackTrace();
   }
 
   }
