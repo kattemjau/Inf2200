@@ -5,7 +5,8 @@ class Oblig2{
       pro.innleser("buildhouse1.txt");
       pro.settPointer();
       pro.settEarliest();
-      pro.printTask();
+      pro.getLatest();
+    //  pro.printTask();
 
   }catch(Exception e){
     e.printStackTrace();

@@ -64,19 +64,70 @@ class Prosjekt{
   void settEarliest(){
     for(Task e: array){
       e.checkCycle(e.id);
-      //System.out.println("ID: " + e.id + " Earliest: "+ e.getEarliest());
+    }for (Task e: array ) {
+      System.out.println("ID: " + e.id + " Earliest: "+ e.getEarliest());
+    }
+
+  }
+  Task findMaxTime(){
+    int latest=0;
+    Task last = null;
+    for (Task e: array) {
+      if(e.earlyStart > latest){
+        latest = e.earlyStart;
+        last =e;
+      }
+    }
+    return last;
+  }
+  void getLatest(){
+    Task temp = findMaxTime();
+    System.out.println(" ");
+    for (Task e: array ) {
+      e.latestStart=temp.earlyStart + temp.time;
+    }
+
+    temp.getLatest(temp.latestStart);
+
+    for (Task k: array) {
+      if(k.latestStart ==( temp.earlyStart + temp.time)){
+        k.getLatest(k.latestStart);
+      }
+    }
+
+
+    for (Task i: array ) {
+      System.out.println("ID: " + i.id + " Latest: "+ i.latestStart);
+
     }
   }
+/*
+  void getLatest(Task temp){
+    if(temp.edges.size()==0){
+      System.out.println("WAAT");
+      temp.latestStart=0;
+      return;
+    }
+    int latest;
+    for(Task e: temp.edges){
+      latest=temp.latestStart - e.time;
+
+      if(temp.latestStart>latest){
+        temp.latestStart=latest;
+      }
+
+      getLatest(e);
+    }
 
 
-
-
+  }
+ */
 
   class Task {
     int id, time, man;
     String name;
     int[] dep;
-    int earlyStart;
+    int earlyStart, latestStart=0;
     ArrayList<Task > edges;
 
     boolean finished = false;
@@ -118,6 +169,7 @@ class Prosjekt{
         }
       }
 
+
       void checkCycle(int i){
         if(finished == true && i==id){
           System.out.println("CYCLE!!");
@@ -132,5 +184,24 @@ class Prosjekt{
       }
 
       }
+
+        void getLatest(int fis){
+          if(edges.size()==0){
+            latestStart=0;
+            return;
+          }
+          else if(edges != null){
+            int latest = fis - time;
+            if(latestStart > latest){
+              latestStart = latest;
+            }
+
+            for(Task e: edges){
+              e.getLatest(latestStart);
+
+            }
+          }
+
+        }
     }
 }
