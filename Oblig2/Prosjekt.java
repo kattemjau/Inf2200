@@ -101,27 +101,9 @@ class Prosjekt{
 
     }
   }
-/*
-  void getLatest(Task temp){
-    if(temp.edges.size()==0){
-      System.out.println("WAAT");
-      temp.latestStart=0;
-      return;
-    }
-    int latest;
-    for(Task e: temp.edges){
-      latest=temp.latestStart - e.time;
-
-      if(temp.latestStart>latest){
-        temp.latestStart=latest;
-      }
-
-      getLatest(e);
-    }
 
 
-  }
- */
+
 
   class Task {
     int id, time, man;
