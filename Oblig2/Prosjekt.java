@@ -100,7 +100,42 @@ class Prosjekt{
       System.out.println("ID: " + i.id + " Latest: "+ i.latestStart);
 
     }
+    System.out.println(" ");
   }
+
+  void printTasks(){
+    Task temp=findMaxTime();
+    int maxTime = temp.earlyStart+temp.time;
+    int man =0;
+    for (int i =0;i< maxTime;i++ ) {
+      boolean tim =true;
+      for(Task e: array){
+        if(i== e.earlyStart + e.time){
+          if(tim){System.out.println("Time: " + i);}
+          System.out.println("\tFinished: "+e.id );
+          tim =false;
+          man-=e.man;
+        }
+
+      }
+      for (Task k: array) {
+        if(i == k.earlyStart){
+          if(tim){System.out.println("Time: " + i);}
+          System.out.println("\tStarting: " +k.id );
+          tim =false;
+          man+=k.man;
+        }
+      }
+      if(!tim){
+        System.out.println("   Current staff: " + man);
+        System.out.println(" ");
+      }
+
+
+    }
+
+  }
+
 
 
 
@@ -124,10 +159,13 @@ class Prosjekt{
     }
     void print(){
       System.out.println( "ID: " + id + " TIME: " + time + " man: " + man + " name: " + name);
+      System.out.println("Earliest start: " + earlyStart + " latestStart: " + latestStart + " slack: " + (latestStart- earlyStart));
       for (Task e: edges) {
-        System.out.println("edges: " + e.id);
+        System.out.print("dependencies: " + e.id + " ");
         }
         System.out.println(" ");
+        System.out.println(" ");
+
       }
 
 
@@ -180,10 +218,9 @@ class Prosjekt{
 
             for(Task e: edges){
               e.getLatest(latestStart);
-
             }
           }
-
         }
+
     }
 }
