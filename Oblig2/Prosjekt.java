@@ -60,6 +60,7 @@ class Prosjekt{
       }
     }
     }
+
   }
   void settEarliest(){
     for(Task e: array){
@@ -178,12 +179,11 @@ class Prosjekt{
           int earliestB=0;
           for (Task e: edges) {
             int earliest = e.time + e.getEarliest();
-
             if(earliest>earliestB){
               earliestB=earliest;
             }
-
           }
+
           earlyStart=earliestB;
           return earliestB;
         }

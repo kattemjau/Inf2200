@@ -1,0 +1,16 @@
+EarlyStart
+O(n^e) Expononensiell
+
+LatestStart
+O(n) Liner
+O(n^e) Expononensiell
+O(n^e) Expononensiell
+
+settPointer
+O(n^e) Exponsiell
+
+findMaxTime
+O(n) Liner
+
+checkCycle
+O(n^e) Explonell

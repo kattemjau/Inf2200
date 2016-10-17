@@ -1,0 +1,86 @@
+ID: 1 Earliest: 4
+ID: 2 Earliest: 8
+ID: 3 Earliest: 14
+ID: 4 Earliest: 14
+ID: 5 Earliest: 0
+ID: 6 Earliest: 4
+ID: 7 Earliest: 14
+ID: 8 Earliest: 18
+ 
+ID: 1 Latest: 4
+ID: 2 Latest: 8
+ID: 3 Latest: 17
+ID: 4 Latest: 21
+ID: 5 Latest: 0
+ID: 6 Latest: 12
+ID: 7 Latest: 14
+ID: 8 Latest: 18
+ 
+Time: 0
+	Starting: 5
+   Current staff: 2
+ 
+Time: 4
+	Finished: 5
+	Starting: 1
+	Starting: 6
+   Current staff: 4
+ 
+Time: 6
+	Finished: 6
+   Current staff: 2
+ 
+Time: 8
+	Finished: 1
+	Starting: 2
+   Current staff: 4
+ 
+Time: 14
+	Finished: 2
+	Starting: 3
+	Starting: 4
+	Starting: 7
+   Current staff: 7
+ 
+Time: 15
+	Finished: 3
+	Finished: 4
+   Current staff: 2
+ 
+Time: 18
+	Finished: 7
+	Starting: 8
+   Current staff: 4
+ 
+ID: 1 TIME: 4 man: 2 name: Build-walls
+Earliest start: 4 latestStart: 4 slack: 0
+dependencies: 5  
+ 
+ID: 2 TIME: 6 man: 4 name: Build-roofs
+Earliest start: 8 latestStart: 8 slack: 0
+dependencies: 1  
+ 
+ID: 3 TIME: 1 man: 2 name: Put-on-wallpapers
+Earliest start: 14 latestStart: 17 slack: 3
+dependencies: 1 dependencies: 2  
+ 
+ID: 4 TIME: 1 man: 3 name: Put-on-tiles
+Earliest start: 14 latestStart: 21 slack: 7
+dependencies: 2  
+ 
+ID: 5 TIME: 4 man: 2 name: Build-foundation
+Earliest start: 0 latestStart: 0 slack: 0
+ 
+ 
+ID: 6 TIME: 2 man: 2 name: Make-floor
+Earliest start: 4 latestStart: 12 slack: 8
+dependencies: 5  
+ 
+ID: 7 TIME: 4 man: 2 name: Put-carpet-floor
+Earliest start: 14 latestStart: 14 slack: 0
+dependencies: 6 dependencies: 2  
+ 
+ID: 8 TIME: 4 man: 4 name: Move-in
+Earliest start: 18 latestStart: 18 slack: 0
+dependencies: 3 dependencies: 7  
+ 
