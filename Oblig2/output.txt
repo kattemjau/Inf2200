@@ -1,3 +1,5 @@
+buildhouse1.txt
+
 ID: 1 Earliest: 4
 ID: 2 Earliest: 8
 ID: 3 Earliest: 14
@@ -6,7 +8,7 @@ ID: 5 Earliest: 0
 ID: 6 Earliest: 4
 ID: 7 Earliest: 14
 ID: 8 Earliest: 18
- 
+
 ID: 1 Latest: 4
 ID: 2 Latest: 8
 ID: 3 Latest: 17
@@ -15,72 +17,449 @@ ID: 5 Latest: 0
 ID: 6 Latest: 12
 ID: 7 Latest: 14
 ID: 8 Latest: 18
- 
+
 Time: 0
 	Starting: 5
    Current staff: 2
- 
+
 Time: 4
 	Finished: 5
 	Starting: 1
 	Starting: 6
    Current staff: 4
- 
+
 Time: 6
 	Finished: 6
    Current staff: 2
- 
+
 Time: 8
 	Finished: 1
 	Starting: 2
    Current staff: 4
- 
+
 Time: 14
 	Finished: 2
 	Starting: 3
 	Starting: 4
 	Starting: 7
    Current staff: 7
- 
+
 Time: 15
 	Finished: 3
 	Finished: 4
    Current staff: 2
- 
+
 Time: 18
 	Finished: 7
 	Starting: 8
    Current staff: 4
- 
+
 ID: 1 TIME: 4 man: 2 name: Build-walls
 Earliest start: 4 latestStart: 4 slack: 0
-dependencies: 5  
- 
+dependencies: 5
+
 ID: 2 TIME: 6 man: 4 name: Build-roofs
 Earliest start: 8 latestStart: 8 slack: 0
-dependencies: 1  
- 
+dependencies: 1
+
 ID: 3 TIME: 1 man: 2 name: Put-on-wallpapers
 Earliest start: 14 latestStart: 17 slack: 3
-dependencies: 1 dependencies: 2  
- 
+dependencies: 1 dependencies: 2
+
 ID: 4 TIME: 1 man: 3 name: Put-on-tiles
 Earliest start: 14 latestStart: 21 slack: 7
-dependencies: 2  
- 
+dependencies: 2
+
 ID: 5 TIME: 4 man: 2 name: Build-foundation
 Earliest start: 0 latestStart: 0 slack: 0
- 
- 
+
+
 ID: 6 TIME: 2 man: 2 name: Make-floor
 Earliest start: 4 latestStart: 12 slack: 8
-dependencies: 5  
- 
+dependencies: 5
+
 ID: 7 TIME: 4 man: 2 name: Put-carpet-floor
 Earliest start: 14 latestStart: 14 slack: 0
-dependencies: 6 dependencies: 2  
- 
+dependencies: 6 dependencies: 2
+
 ID: 8 TIME: 4 man: 4 name: Move-in
 Earliest start: 18 latestStart: 18 slack: 0
-dependencies: 3 dependencies: 7  
- 
+dependencies: 3 dependencies: 7
+
+
+buildhouse2.txt
+
+ID: 1 TIME: 4 man: 2 name: Build-walls
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 5 dependencies: 6
+
+ID: 2 TIME: 6 man: 4 name: Build-roofs
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 1
+
+ID: 3 TIME: 1 man: 2 name: Put-on-wallpapers
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 1 dependencies: 2
+
+ID: 4 TIME: 1 man: 3 name: Put-on-tiles
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 2
+
+ID: 5 TIME: 4 man: 2 name: Build-foundation
+Earliest start: 0 latestStart: 0 slack: 0
+
+
+ID: 6 TIME: 2 man: 2 name: Make-floor
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 5 dependencies: 3
+
+ID: 7 TIME: 4 man: 2 name: Put-carpet-floor
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 6 dependencies: 2
+
+ID: 8 TIME: 4 man: 4 name: Move-in
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 3 dependencies: 7
+
+CYCLE!!
+1 << 6 << 3 << 1
+
+
+buildrail.txt
+
+ID: 1 TIME: 20 man: 10 name: Install-pavement
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 28 dependencies: 29
+
+ID: 2 TIME: 7 man: 10 name: Install-railing
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 10
+
+ID: 3 TIME: 1 man: 10 name: Install-ticketmachine
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 8
+
+ID: 4 TIME: 15 man: 6 name: Paint-tower-1-with-arch
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 24
+
+ID: 5 TIME: 12 man: 6 name: Paint-tower-2
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 25
+
+ID: 6 TIME: 27 man: 6 name: Paint-trusses
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 28 dependencies: 29
+
+ID: 7 TIME: 18 man: 6 name: Paint-cables-and-rods
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 28 dependencies: 29
+
+ID: 8 TIME: 12 man: 7 name: Put-lane-tunnel-and-intersection
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 13 dependencies: 15
+
+ID: 9 TIME: 3 man: 10 name: Setup-barrack
+Earliest start: 0 latestStart: 0 slack: 0
+
+
+ID: 10 TIME: 2 man: 4 name: Prepare-storage
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 9
+
+ID: 11 TIME: 1 man: 4 name: Rig-ramspace-reinforcing
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 9
+
+ID: 12 TIME: 30 man: 12 name: Build-tunnel
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 9
+
+ID: 13 TIME: 18 man: 12 name: Clean-tunnel
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 12
+
+ID: 14 TIME: 25 man: 12 name: Build-intersection
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 9
+
+ID: 15 TIME: 20 man: 12 name: Clean-intersection
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 14
+
+ID: 16 TIME: 35 man: 12 name: Build-towerfoundation-1
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 9
+
+ID: 17 TIME: 45 man: 12 name: Build-towerfoundation-2
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 9
+
+ID: 18 TIME: 40 man: 4 name: Make-armouring-tower-1
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 11
+
+ID: 19 TIME: 25 man: 4 name: Make-armouring-tower-2
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 11
+
+ID: 20 TIME: 12 man: 4 name: Make-armouring-arch
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 11
+
+ID: 21 TIME: 15 man: 5 name: Encase-and-armour-tower-1
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 16 dependencies: 18
+
+ID: 22 TIME: 16 man: 5 name: Encase-and-armour-tower-2
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 17 dependencies: 19
+
+ID: 23 TIME: 30 man: 5 name: Encase-and-armour-arch
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 20
+
+ID: 24 TIME: 60 man: 7 name: Cast-tower-1
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 21
+
+ID: 25 TIME: 60 man: 7 name: Cast-tower-2
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 22
+
+ID: 26 TIME: 20 man: 7 name: Cast-arch
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 23
+
+ID: 27 TIME: 25 man: 10 name: Stretch-two-maincables
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 24 dependencies: 25
+
+ID: 28 TIME: 30 man: 10 name: Build-truss-1-with-rods
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 27
+
+ID: 29 TIME: 37 man: 10 name: Build-truss-2-with-rods
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 27
+
+ID: 30 TIME: 20 man: 7 name: Cast-lane-on-truss
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 28 dependencies: 29
+
+ID: 31 TIME: 12 man: 7 name: Polish-lane-on-arch
+Earliest start: 0 latestStart: 0 slack: 0
+dependencies: 30 dependencies: 26 dependencies: 8
+
+ID: 1 Earliest: 186
+ID: 2 Earliest: 5
+ID: 3 Earliest: 63
+ID: 4 Earliest: 119
+ID: 5 Earliest: 124
+ID: 6 Earliest: 186
+ID: 7 Earliest: 186
+ID: 8 Earliest: 51
+ID: 9 Earliest: 0
+ID: 10 Earliest: 3
+ID: 11 Earliest: 3
+ID: 12 Earliest: 3
+ID: 13 Earliest: 33
+ID: 14 Earliest: 3
+ID: 15 Earliest: 28
+ID: 16 Earliest: 3
+ID: 17 Earliest: 3
+ID: 18 Earliest: 4
+ID: 19 Earliest: 4
+ID: 20 Earliest: 4
+ID: 21 Earliest: 44
+ID: 22 Earliest: 48
+ID: 23 Earliest: 16
+ID: 24 Earliest: 59
+ID: 25 Earliest: 64
+ID: 26 Earliest: 46
+ID: 27 Earliest: 124
+ID: 28 Earliest: 149
+ID: 29 Earliest: 149
+ID: 30 Earliest: 186
+ID: 31 Earliest: 206
+
+ID: 1 Latest: 198
+ID: 2 Latest: 211
+ID: 3 Latest: 217
+ID: 4 Latest: 203
+ID: 5 Latest: 206
+ID: 6 Latest: 191
+ID: 7 Latest: 200
+ID: 8 Latest: 194
+ID: 9 Latest: 0
+ID: 10 Latest: 209
+ID: 11 Latest: 8
+ID: 12 Latest: 146
+ID: 13 Latest: 176
+ID: 14 Latest: 149
+ID: 15 Latest: 174
+ID: 16 Latest: 14
+ID: 17 Latest: 3
+ID: 18 Latest: 9
+ID: 19 Latest: 23
+ID: 20 Latest: 144
+ID: 21 Latest: 49
+ID: 22 Latest: 48
+ID: 23 Latest: 156
+ID: 24 Latest: 64
+ID: 25 Latest: 64
+ID: 26 Latest: 186
+ID: 27 Latest: 124
+ID: 28 Latest: 156
+ID: 29 Latest: 149
+ID: 30 Latest: 186
+ID: 31 Latest: 206
+
+Time: 0
+	Starting: 9
+   Current staff: 10
+
+Time: 3
+	Finished: 9
+	Starting: 10
+	Starting: 11
+	Starting: 12
+	Starting: 14
+	Starting: 16
+	Starting: 17
+   Current staff: 56
+
+Time: 4
+	Finished: 11
+	Starting: 18
+	Starting: 19
+	Starting: 20
+   Current staff: 64
+
+Time: 5
+	Finished: 10
+	Starting: 2
+   Current staff: 70
+
+Time: 12
+	Finished: 2
+   Current staff: 60
+
+Time: 16
+	Finished: 20
+	Starting: 23
+   Current staff: 61
+
+Time: 28
+	Finished: 14
+	Starting: 15
+   Current staff: 61
+
+Time: 29
+	Finished: 19
+   Current staff: 57
+
+Time: 33
+	Finished: 12
+	Starting: 13
+   Current staff: 57
+
+Time: 38
+	Finished: 16
+   Current staff: 45
+
+Time: 44
+	Finished: 18
+	Starting: 21
+   Current staff: 46
+
+Time: 46
+	Finished: 23
+	Starting: 26
+   Current staff: 48
+
+Time: 48
+	Finished: 15
+	Finished: 17
+	Starting: 22
+   Current staff: 29
+
+Time: 51
+	Finished: 13
+	Starting: 8
+   Current staff: 24
+
+Time: 59
+	Finished: 21
+	Starting: 24
+   Current staff: 26
+
+Time: 63
+	Finished: 8
+	Starting: 3
+   Current staff: 29
+
+Time: 64
+	Finished: 3
+	Finished: 22
+	Starting: 25
+   Current staff: 21
+
+Time: 66
+	Finished: 26
+   Current staff: 14
+
+Time: 119
+	Finished: 24
+	Starting: 4
+   Current staff: 13
+
+Time: 124
+	Finished: 25
+	Starting: 5
+	Starting: 27
+   Current staff: 22
+
+Time: 134
+	Finished: 4
+   Current staff: 16
+
+Time: 136
+	Finished: 5
+   Current staff: 10
+
+Time: 149
+	Finished: 27
+	Starting: 28
+	Starting: 29
+   Current staff: 20
+
+Time: 179
+	Finished: 28
+   Current staff: 10
+
+Time: 186
+	Finished: 29
+	Starting: 1
+	Starting: 6
+	Starting: 7
+	Starting: 30
+   Current staff: 29
+
+Time: 204
+	Finished: 7
+   Current staff: 23
+
+Time: 206
+	Finished: 1
+	Finished: 30
+	Starting: 31
+   Current staff: 13
+
+Time: 213
+	Finished: 6
+   Current staff: 7
+
+Time: 218
+	Finished: 31
+   Current staff: 0

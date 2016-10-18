@@ -108,7 +108,7 @@ class Prosjekt{
     Task temp=findMaxTime();
     int maxTime = temp.earlyStart+temp.time;
     int man =0;
-    for (int i =0;i< maxTime;i++ ) {
+    for (int i =0;i<= maxTime;i++ ) {
       boolean tim =true;
       for(Task e: array){
         if(i== e.earlyStart + e.time){
@@ -190,6 +190,7 @@ class Prosjekt{
       }
 
 
+
       void checkCycle(int i){
         if(finished == true && i==id){
           System.out.println("CYCLE!!" );
@@ -205,6 +206,8 @@ class Prosjekt{
           finished = true;
           e.checkCycle(i);
         }
+        finished=false;
+
       }
 
       }
