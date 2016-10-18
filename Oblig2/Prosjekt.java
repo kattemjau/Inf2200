@@ -192,8 +192,12 @@ class Prosjekt{
 
       void checkCycle(int i){
         if(finished == true && i==id){
-          System.out.println("CYCLE!!");
-          //gatt i cycle
+          System.out.println("CYCLE!!" );
+          System.out.print(i);
+          for (Task e:edges) {
+            e.printCycle(i);
+          }
+          System.out.println( " << " + id);
           System.exit(0);
         }
         else if(edges!=null){
@@ -203,6 +207,20 @@ class Prosjekt{
         }
       }
 
+      }
+      void printCycle(int i){
+        if(edges.size()!=0){
+          System.out.print( " << " + id);
+
+        }
+        for (Task e:edges) {
+          if(e.id==i){
+            System.out.println( " << " + i);
+            System.exit(0);
+          }
+          e.printCycle(i);
+
+        }
       }
 
         void getLatest(int fis){
