@@ -21,34 +21,34 @@ class Sorter{
 			return;
 		}
 		//int maxHopp = haystack.length - needle.length;
-		for (int i=needle.length;i<haystack.length; i++) {
+		for (int i=needle.length-1;i<haystack.length; i++) {
 			
 			if(needle[needle.length-1] == haystack[i]){
 				int count =1;
-				System.out.println("test");
+				//System.out.println("test");
 				for (int k=needle.length-2; k>=0; k--) {
 				//sjekker en mulig kombo: '_' er freepass
 					if(needle[k] == haystack[i-count] || needle[k]== '_'){
 						if(k==0){
 							//fant en mulighet
 							los.add(i-count);
-							System.out.println("LOSNING: haystack pa plass " + (i-count));
+							//System.out.println("LOSNING: haystack pa plass " + (i-count));
 						}
 					}else{
 						//hopper til neste kombo
 						i+=pri.get(haystack[i])-1;
-						System.out.println("BREAK");
+						//System.out.println("BREAK");
 						break;
 					}
 					count++;
 				}
 	
 			}else{
-				//nullpointer
 				if(pri.containsKey(haystack[i])){
 					i+=pri.get(haystack[i])-1;
 				}else{
-					i+=needle.length-2;
+					//vet ikke hva _ er, sa best a hoppe 1 plass
+					//i+=needle.length-2;
 				}
 			}
 
@@ -59,7 +59,7 @@ class Sorter{
 
 	void printLos(){
 		for(Integer e: los){
-			System.out.println("losningen er: " + e);
+			System.out.println("losningen pa posisjon: " + e);
 			for (int i=e; i<needle.length+e; i++) {
 				System.out.print(haystack[i]);
 				
@@ -91,7 +91,7 @@ class Sorter{
 				}
 			} 
 		}
-		printKeys();	
+		//printKeys();	
 	}
 
 	void printKeys(){
