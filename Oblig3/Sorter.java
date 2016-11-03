@@ -23,7 +23,7 @@ class Sorter{
 		//int maxHopp = haystack.length - needle.length;
 		for (int i=needle.length-1;i<haystack.length; i++) {
 			
-			if(needle[needle.length-1] == haystack[i]){
+			if(needle[needle.length-1] == haystack[i] || needle[needle.length-1]== '_'){
 				int count =1;
 				//System.out.println("test");
 				for (int k=needle.length-2; k>=0; k--) {
@@ -36,13 +36,19 @@ class Sorter{
 						}
 					}else{
 						//hopper til neste kombo
-						i+=pri.get(haystack[i])-1;
+						if(pri.containsKey(haystack[i])){
+							i+=pri.get(haystack[i])-1;
+						}else{
+							//vet ikke hva _ er, sa best a hoppe 1 plass
+							//i+=needle.length-2;
+						}
+
 						//System.out.println("BREAK");
 						break;
 					}
 					count++;
 				}
-	
+
 			}else{
 				if(pri.containsKey(haystack[i])){
 					i+=pri.get(haystack[i])-1;
