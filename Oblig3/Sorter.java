@@ -7,22 +7,23 @@ class Sorter{
 	private HashMap<Character, Integer> pri = new HashMap<>();
 	private ArrayList<Integer> los = new ArrayList<>();
 
-	Sorter(String needle, String haystack){
-		char temp[]=needle.toCharArray();
-		char temp2[]=haystack.toCharArray();
+	Sorter(String ned, String hay){
+		char temp[]=ned.toCharArray();
+		char temp2[]=hay.toCharArray();
 		this.needle=temp;
-		this.haystack=temp2;		
-		settHopp();
-		finnNeedle();
-	}
-	void finnNeedle(){
+		this.haystack=temp2;
+
 		if(needle.length == 1 || needle.length > haystack.length){
 			System.out.println("false needle");
 			return;
 		}
+		settHopp();
+		finnNeedle();
+	}
+	void finnNeedle(){
 		//int maxHopp = haystack.length - needle.length;
 		for (int i=needle.length-1;i<haystack.length; i++) {
-			
+
 			if(needle[needle.length-1] == haystack[i] || needle[needle.length-1]== '_'){
 				int count =1;
 				//System.out.println("test");
@@ -68,7 +69,7 @@ class Sorter{
 			System.out.println("losningen pa posisjon: " + e);
 			for (int i=e; i<needle.length+e; i++) {
 				System.out.print(haystack[i]);
-				
+
 			}
 			System.out.println(" ");
 		}
@@ -77,7 +78,7 @@ class Sorter{
 	void settHopp(){
 		for (int i=0;i<needle.length; i++) {
 		//	System.out.println("i: " + i + " " + needle[i]);
-			
+
 			if(needle[i]=='_'){
 			//	System.out.println("___");
 			}else{
@@ -88,22 +89,22 @@ class Sorter{
 				else{
 					if(pri.containsKey(needle[i])){
 						pri.remove(needle[i]);
-						pri.put(needle[i], needle.length-i-1);												
+						pri.put(needle[i], needle.length-i-1);
 					}else{
 						pri.put(needle[i], needle.length-i-1);
 					}
 
 				//	System.out.println(needle[i] + " " + (needle.length-i-1));
 				}
-			} 
+			}
 		}
-		//printKeys();	
+		//printKeys();
 	}
 
 	void printKeys(){
 		for (Character e: pri.keySet()) {
 			System.out.println("needle: " + e + " " + pri.get(e));
-		}	
+		}
 		/*for (int i=0; i<needle.length; i++ ) {
 			System.out.println("needle : " + needle[i]);
 		} */
