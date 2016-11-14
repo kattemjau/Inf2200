@@ -4,15 +4,17 @@ import java.util.Scanner;
 
 class main{
 	public static void main(String[] args) {
+
 		System.out.println("testing program:");
-		Sorter test1 = new Sorter("g_c", "gacogkco");
-		Sorter test2 = new Sorter("ac_o", "akksaokaackookao");
+		Sorter test = new Sorter("i", "ingiegogo");
+		Sorter testk = new Sorter("bbabbb", "bbbabbb");
+		Sorter testw = new Sorter("_ma", "panama");
 		System.out.println("Testing ferdig:");
 		System.out.println();
 
-		if(args[0] == null){
+		if(args.length==0){
 			System.out.println("usage: java main <filnavn1> <filnavn2>");
-			System.exit(0);
+			return;
 		}
 
 		String needle, haystack;
