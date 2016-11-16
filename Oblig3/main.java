@@ -9,6 +9,7 @@ class main{
 		Sorter test = new Sorter("i", "ingiegogo");
 		Sorter testk = new Sorter("bbabbb", "bbbabbb");
 		Sorter testw = new Sorter("_ma", "panama");
+		Sorter testdw = new Sorter("ab_cd", "xxabycdxx");
 		System.out.println("Testing ferdig:");
 		System.out.println();
 
