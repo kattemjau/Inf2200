@@ -16,6 +16,10 @@ class Main{
 		//her er hele ordlisten satt inn i et binert tre
 		//ui
 		System.out.println("storrelse pa listen: " + liste.antall);
+
+		liste.printStatistikk();
+
+
 		String valg;
 		in=new Scanner(System.in);
 
@@ -40,6 +44,7 @@ class Main{
 				}
 			}
 		}
+
 
 	}catch(Exception e){
 		System.out.println("File exception");
@@ -190,6 +195,76 @@ class SettInn<E extends Comparable<E>>{
 			}
 		return liste;
 	}
+	void printStatistikk(){
+		//depth of tree
+		checkMaxDepth(root, 0);
+		//how manny nodes there are for eatch depth of the tree
+		System.out.println("Dybde paa treeet");
+		System.out.println(treeDepth);
+		System.out.println();
+
+		//aphabetically first and last word
+		System.out.println("First word");
+		System.out.println(lastWord(root));
+		System.out.println(" ");
+
+		System.out.println("Last Word");
+		System.out.println(firstWord(root));
+
+		//average depth of all nodeliste
+		finnGjennomsnitt(root, 0);
+
+		//gjennomsnitt
+		int su =1, ant=1;
+
+		for(Integer e: gjennomsnitt){
+			ant++;
+			su = su + e;
+		}
+		System.out.println(" ");
+		System.out.println("gjennomsnitt");
+		System.out.println(su/ant + " Noder");
+	}
+	// treeDepth(){
+	// 	for (int i=0;i< treeDepth+1; i++) {
+	// 		System.out.print("plass " + i + ": ");
+	// 		System.out.println(nodes(root, i, 0));
+	//
+	// 	}
+	// }
+	int treeDepth=0;
+	void checkMaxDepth(Node n, int depth){
+		if(treeDepth < depth){
+			treeDepth=depth;
+		}
+		if(n.left != null){
+			checkMaxDepth(n.left, depth +1 );
+		}if(n.right != null){
+			checkMaxDepth(n.right, depth +1 );
+		}
+	}
+	String lastWord(Node n){
+		if(n.right==null){
+			return n.data;
+		}return lastWord(n.right);
+	}
+	String firstWord(Node n){
+		if(n.left == null){
+			return n.data;
+		} return firstWord(n.left);
+	}
+	ArrayList<Integer> gjennomsnitt = new ArrayList<>();
+	void finnGjennomsnitt(Node n, int depth){
+		if(n.left==null || n.right==null){
+			gjennomsnitt.add(depth);
+		}
+		if(n.left != null){
+			finnGjennomsnitt(n.left, depth +1 );
+		}if(n.right != null){
+			finnGjennomsnitt(n.right, depth +1 );
+		}
+	}
+
 
 
 
