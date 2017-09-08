@@ -15,29 +15,41 @@ class Main{
 		}
 		//her er hele ordlisten satt inn i et binert tre
 		//ui
-		System.out.println("storrelse pa listen: " + liste.antall);
 
-		liste.printStatistikk();
-
-
-		String valg;
+		String valg=null;
+		int velge=0;
 		in=new Scanner(System.in);
 
 		ArrayList<String> resultat;
 
 		for (; ; ) {
-			System.out.println("Exit program (q), or search for a word");
-			valg=in.nextLine();
-			if(valg.equals("q")){
-				System.out.println("exiting program");
-				break;
+			if(velge<4){
+				if(velge==0){
+					valg="achiev";
+				}else if(velge==1){
+					valg="achiese";
+				}else if(velge==2){
+					valg="achievee";
+				}else if(velge==2){
+					valg="ahcieve";
+				}
+				velge++;
+			}else{
+				System.out.println("Exit program (q), or search for a word");
+				valg=in.nextLine();
+				if(valg.equals("q")){
+					System.out.println("storrelse pa listen: " + liste.antall);
+					liste.printStatistikk();
+					System.out.println("exiting program");
+					break;
+				}
 			}
 
 			//search for word
 			if(liste.findWord(valg)){
 				System.out.println("fant ordet: " + valg);
 			}else {
-				System.out.println("Leter etter liknende ord:");
+				System.out.println("Fant ikke ordet: " + valg + " Leter etter liknende ord:");
 				resultat=liste.findSimmular(valg);
 				for(String e: resultat){
 					System.out.println(e);

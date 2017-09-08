@@ -8,3 +8,7 @@ compile:
 
 clean:
 	rm -r *.class
+
+utskrift:
+	java Main > utskrift.txt
+	cat utskrift.txt
