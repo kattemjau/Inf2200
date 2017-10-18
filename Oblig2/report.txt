@@ -1,0 +1,58 @@
+Dette er en kompleksitets beskrivelse av Oblig2.java av implementasjonen i oppgaven.
+
+
+EarlyStart
+O(n^e) exponensiell
+
+Metoden getEarliest er den som setter verdien early start.
+Den består av en rekursiv for løkke som kjører for hver edges "e" til noden den er på
+int earliest = e.time + e.getEarliest();
+
+
+LatestStart
+O(n) Liner
+Denne er en for løkke under getLatest som finner latestStart fra alle nodene i et array
+for (Task e: array ) {
+	e.latestStart=temp.earlyStart + temp.time;
+}
+
+O(n^e) exponensiell
+Hvis Det er noen hjørnenoder som ikke har blitt satt riktig tid på vil det ittereres igjennom arrayet igjen
+
+    for (Task k: array) {
+      if(k.latestStart ==( temp.earlyStart + temp.time)){
+        k.getLatest(k.latestStart);
+      }
+    }
+
+O(n^e) exponensiell
+Metoden getLatest er den som setter verdien LatestStart.
+Den består av en rekursiv for løkke som kjører for hver edges til noden den er på
+for(Task e: edges){
+	e.getLatest(latestStart);
+}
+
+settPointer
+O(n^e) exponensiell
+
+Denne består av en for løkke av i antall elementer i et array.
+inne i denne er det en for løkke som ittererer over e elementer.
+for (Task i: array) {
+	if(i.dep!=null){
+	for (int e: i.dep) {
+		//System.out.println(e);
+		i.edges.add(array[e-1]);
+	}
+}
+}
+
+findMaxTime
+O(n) Liner
+For løkke som ittererer over et array
+
+checkCycle
+O(n^e) exponensiell
+
+checkCycle blir kalt på i en for løkke hvor hver node.
+den vil itterere igjennom hver path til noden for å se om det er en cycle som skjer.
+Den er rekursiv
