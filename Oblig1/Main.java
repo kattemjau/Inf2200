@@ -138,7 +138,7 @@ class SettInn<E extends Comparable<E>>{
 
 		char[] et = data.toCharArray();
 
-		//endre plass pa bokstaver funker
+		//endre plass pa bokstaver 
 		for (int i=0; i < (data.length() - 1); i++) {
 			char[] lik = data.toCharArray();
 			lik[i] = et[i+1];
@@ -151,7 +151,7 @@ class SettInn<E extends Comparable<E>>{
 			}
 		}
 
-		//bytt ut bokstaver funker
+		//bytt ut bokstaver 
 		for (int i=0; i < data.length(); i++) {
 			for (char k='a';k <= 'z'; k++) {
 				char[] lik = data.toCharArray();
@@ -167,7 +167,7 @@ class SettInn<E extends Comparable<E>>{
 
 			}
 		}
-		//en bokstav er fjernet funker
+		//en bokstav er fjernet 
 		for (int i=0; i < data.length(); i++) {
 			String lik = "";
 			for(int k=0; k < data.length(); k++){

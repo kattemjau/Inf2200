@@ -13,3 +13,17 @@ Hver node har opptill 2 barn som vil halvere innsettings tiden for hvert ledd. D
 
 søkemetoden findSimmular vil raskt lete igjennom listen etter liknende ord fordelt over flere algorithmer. Jo lengre oppe i binærtreet ordet ligger jo raskere vil ordet finnes.
 Denne metoden skalerer logarithmisk.
+
+O notasjon for søkefunksjonene.
+//endre plass pa bokstaver
+
+Denne har en O notasjon lik n
+
+//bytt ut bokstaver
+Denne har en O notasjon lik n*k
+
+//en bokstav er fjernet
+denne har en O notasjon lik n^n
+
+//en bokstav lagt til
+Denne har en O notasjon lik (n*k)^n	
