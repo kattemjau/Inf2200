@@ -1,4 +1,4 @@
-n=100000
+n=100
 
 run: compile
 	java Oblig3 $(n)
