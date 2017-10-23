@@ -41,12 +41,12 @@ public class Oblig3{
 		testSort(a);
 		System.out.println(" ");
 
-		//
-		// long tt = System.nanoTime();
-		// Arrays.sort(aClone);
-		// double tid = (System.nanoTime() -tt)/ (double)1000000.0;
-		// System.out.println("Array.sort Sorterte "+n+" tall paa:" + tid + "millisek.");
-		// testSort(aClone);
+		
+		long tt = System.nanoTime();
+		Arrays.sort(aClone);
+		double tid = (System.nanoTime() -tt)/ (double)1000000.0;
+		System.out.println("Array.sort Sorterte "+n+" tall paa:" + tid + "millisek.");
+		testSort(aClone);
 
 	}
 	void vRadix(int[] a){
