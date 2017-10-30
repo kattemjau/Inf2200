@@ -6,10 +6,15 @@ class main{
 	public static void main(String[] args) {
 
 		System.out.println("testing program:");
-		Sorter test = new Sorter("i", "ingiegogo");
-		Sorter testk = new Sorter("bbabbb", "bbbabbb");
-		Sorter testw = new Sorter("_ma", "panama");
-		Sorter testdw = new Sorter("ab_cd", "xxabycdxx");
+		new Sorter("i", "ingiegogo");
+		new Sorter("bbabbb", "bbbabbb");
+		new Sorter("_ma", "panama");
+		new Sorter("ab_cd", "xxabycdxx");
+		new Sorter("ab_cd", "");
+		new Sorter("", "xxabycdxx");
+		new Sorter("_", "xxabycdxx");
+		new Sorter("xxabycdxx", "_");
+		new Sorter("x_", "xxabycdxx");
 		System.out.println("Testing ferdig:");
 		System.out.println();
 

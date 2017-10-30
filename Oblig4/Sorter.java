@@ -14,7 +14,7 @@ class Sorter{
 		this.needle=temp;
 		this.haystack=temp2;
 
-		if(needle.length > haystack.length){
+		if(needle.length > haystack.length || needle.length==0){
 			System.out.println("false needle");
 			return;
 		}if(needle.length == 1){
