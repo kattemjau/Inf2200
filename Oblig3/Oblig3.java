@@ -11,13 +11,21 @@
 **/
 
 
+
 import java.util.*;
 
 public class Oblig3{
+
+	static final int MAX = 256;
+	static final int BYTE = 8;
+
 	int[] a;
 	int n;
 	public static void main(String[] args) {
-	new Oblig3().accumulating(Integer.parseInt(args[0]));
+		new Oblig3().accumulating(Integer.parseInt(args[0]));
+		// int [] c = {3,3,3,3,3,3,3,3,3,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5};
+		// int [] d = new int[c.length];
+		// new Oblig3().radx(c, d, 0, c.length-1, 0, BYTE);
 
 	}
 	public void accumulating(int len){
@@ -35,13 +43,13 @@ public class Oblig3{
 
 
 		long t = System.nanoTime();
-		radx(a, b, 0, a.length-1, 24, 8);
+		radx(a, b, 0, a.length-1, 24, BYTE);
 		double tim = (System.nanoTime() -t)/ (double)1000000.0;
 		System.out.println("VenstreRadix Sorterte "+n+" tall paa:" + tim + "millisek.");
 		testSort(a);
 		System.out.println(" ");
 
-		
+
 		long tt = System.nanoTime();
 		Arrays.sort(aClone);
 		double tid = (System.nanoTime() -tt)/ (double)1000000.0;
@@ -49,43 +57,113 @@ public class Oblig3{
 		testSort(aClone);
 
 	}
-	void vRadix(int[] a){
-		int max = a[0], numBit = 2, numDigits, n =a.length;
+	// void vRadix(int[] a){
+	// 	int max = a[0], numBit = 2, numDigits, n =a.length;
+	//
+	// 	for (int i = 1 ; i < n ; i++)
+	// 		 if (a[i] > max) max = a[i];
+	// 	while (max >= (1L<<numBit) )numBit++; // antall binaere siffer i max
+	// 	System.out.println("MAX: " + max);
+	// 	System.out.println("numbit: " + numBit);
+	//  //
+	// 	int[] b = new int [a.length];
+	// 	// return radx(a, len, 8);	24 fordi
+	// 	radx(a, b, 0, a.length-1, 24, BYTE);	//endre a til b
+	//
+	// 	//radx(a, b, 0, a.length-1, 0, BYTE);
+	//
+	// 	// int [] c = {3,3,3,3,3,3,3,3,3,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5};
+	// 	// int [] d = new int[c.length];
+	// 	// radx(c, d, 0, a.length-1, 0, BYTE);
+	// }
 
-		for (int i = 1 ; i < n ; i++)
-			 if (a[i] > max) max = a[i];
-		while (max >= (1L<<numBit) )numBit++; // antall binaere siffer i max
-		System.out.println("MAX: " + max);
-		System.out.println("numbit: " + numBit);
-	 //
-		int[] b = new int [a.length];
-		// return radx(a, len, 8);	24 fordi
-		radx(a, b, 0, a.length-1, 24, 8);	//endre a til b
+//KB SIN
+	// void radx(int [] a, int [] b, int left, int right, int leftSortBit, int maskLen){
+	// 	//if(right == 0 || left == 0) {
+	// 		//return;
+	// 	//}
+	//
+	// 	//if (leftSortBit <= 0){
+	// 		//innstikk(a, left, right);
+	// 		//return;
+	// 	//}
+	// 	int shift = 32 - BYTE*leftSortBit - BYTE;
+	//
+	// 	System.out.println("NOT INSERTION YET");
+	// 	System.out.println(leftSortBit);
+	//
+	// 	int value=0, j;
+	// 	// int mask = (1<<maskLen) -1;
+	// 	int[] count = new int [MAX+1];
+	//
+	//
+	// 	for (int i = left; i <= right; i++) {
+	// 		count[((a[i]>>>shift) & MAX-1)+1]++; //gjør om til å gå fra venstre til høyre
+	// 	}
+	//
+	//
+	// 	for (int i = 0; i < MAX; i++) {
+	// 		count[i+1]+=count[i];
+	// 	}
+	//
+	// 	for (int i = left; i <= right; i++) {
+	// 		b[count[(a[i]>>>shift) & MAX-1]++] = a[i]; //endre til å flytte bitsa fra venstre
+	// 	}
+	//
+	// 	//breaks if it reaches last run
+	// 	for (int i=left;i<=right ;i++ ) {
+	// 		a[i]=b[i-left];
+	//
+	// 	}
+	//
+	// 	if(count[0]>0){
+	// 		radx(a, b, left, left+count[0]-1, leftSortBit + 1, maskLen);
+	// 	}
+	// 	if(right<=left+8){
+	// 		// innstikk(a, left, right);
+	// 		return;
+	// 	}
+	// 	for (int i = 0; i < MAX; i++) {
+	// 		if(count[i+1]>count[i])
+	// 		radx(a, b, left+count[i], left+count[i+1]-1, leftSortBit + 1, maskLen);	//endre a til b
+	// 	}
+	//
+	// 	//everything should be in a
+	// 	}
 
-	}
+
+//SNANDRI SIN
 	void radx(int [] a, int [] b, int left, int right, int leftSortBit, int maskLen){
-		if(right<=left+15 ){
-			innstikk(a, left, right);
+		if(right<=left){
+			// innstikk(a, left, right);
 			return;
 		}
+		//if(right == 0 || left == 0) {
+			//return;
+		//}
+
+		//if (leftSortBit <= 0){
+			//innstikk(a, left, right);
+			//return;
+		//}
 
 
 		int value=0, j;
 		// int mask = (1<<maskLen) -1;
-		int[] count = new int [256+1];
+		int[] count = new int [MAX+1];
 
 
 		for (int i = left; i <= right; i++) {
-			count[((a[i]>>>leftSortBit) & 255)+1]++; //gjør om til å gå fra venstre til høyre
+			count[((a[i]>>>leftSortBit) & MAX-1)+1]++; //gjør om til å gå fra venstre til høyre
 		}
 
 
-		for (int i = 0; i <= 255; i++) {
+		for (int i = 0; i < MAX; i++) {
 			count[i+1]+=count[i];
 		}
 
 		for (int i = left; i <= right; i++) {
-			b[count[(a[i]>>>leftSortBit) & 255]++] = a[i]; //endre til å flytte bitsa fra venstre
+			b[count[(a[i]>>>leftSortBit) & MAX-1]++] = a[i]; //endre til å flytte bitsa fra venstre
 		}
 
 		//breaks if it reaches last run
@@ -94,16 +172,21 @@ public class Oblig3{
 
 		}
 
-		if(count[0]>0){
-			radx(a, b, left, left+count[0]-1, leftSortBit-8, maskLen);
+		if(count[0]>0 ){
+			radx(a, b, left, left+count[0]-1, leftSortBit-BYTE, maskLen);
 		}
-		for (int i = 0; i <= 255; i++) {
+		if(right<=left+15){
+		// 	// innstikk(a, left, right);
+			return;
+		}
+
+		for (int i = 0; i < MAX; i++) {
 			if(count[i+1]>count[i])
-			radx(a, b, left+count[i], left+count[i+1]-1, leftSortBit-8, maskLen);	//endre a til b
+			radx(a, b, left+count[i], left+count[i+1]-1, leftSortBit-BYTE, maskLen);	//endre a til b
 		}
 
 		//everything should be in a
-		}
+	}
 
 	void innstikk(int []a, int left, int right) {
 		for(int i = left; i <= right; i++) {
