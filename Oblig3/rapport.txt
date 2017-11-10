@@ -1,49 +1,48 @@
-clear
-[3;J[H[2Jjavac *.java
+javac *.java
 java Oblig3 100
- 
+
 VenstreRadix Sorterte 100 tall paa:0.084989millisek.
- 
+
 Array.sort Sorterte 100 tall paa:0.142663millisek.
 clear
 [3;J[H[2Jjavac *.java
 java Oblig3 1000
- 
+
 VenstreRadix Sorterte 1000 tall paa:0.495433millisek.
- 
+
 Array.sort Sorterte 1000 tall paa:0.413175millisek.
 clear
 [3;J[H[2Jjavac *.java
 java Oblig3 10000
- 
+
 VenstreRadix Sorterte 10000 tall paa:3.64795millisek.
- 
+
 Array.sort Sorterte 10000 tall paa:3.381709millisek.
 clear
 [3;J[H[2Jjavac *.java
 java Oblig3 100000
- 
+
 VenstreRadix Sorterte 100000 tall paa:13.309365millisek.
- 
+
 Array.sort Sorterte 100000 tall paa:19.898452millisek.
 clear
 [3;J[H[2Jjavac *.java
 java Oblig3 1000000
- 
+
 VenstreRadix Sorterte 1000000 tall paa:90.37411millisek.
- 
+
 Array.sort Sorterte 1000000 tall paa:108.950124millisek.
 clear
 [3;J[H[2Jjavac *.java
 java Oblig3 10000000
- 
+
 VenstreRadix Sorterte 10000000 tall paa:329.148469millisek.
- 
+
 Array.sort Sorterte 10000000 tall paa:860.225214millisek.
 clear
 [3;J[H[2Jjavac *.java
 java Oblig3 100000000
- 
+
 VenstreRadix Sorterte 100000000 tall paa:2965.19166millisek.
- 
+
 Array.sort Sorterte 100000000 tall paa:9748.579024millisek.
